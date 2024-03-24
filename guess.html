@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>THIS IS A RANDOM NUMBER GUESS GAME</h1>
+
+  <script>
+    function randomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function playGame() {
+    let playerName = prompt("Enter your Cohort:");
+    let passcodeNumber = prompt("Enter your Passcode:");
+    let attempts = 4;
+    let randomNumber = randomInt(20, 40);
+
+    alert(`Welcome, ${playerName}! You have 4 attempts to guess the random number between 20 and 40.`);
+
+    while (attempts > 0) {
+        let guess = parseInt(prompt(`Attempt ${5 - attempts}: Enter your guess:`));
+
+        if (!isNaN(guess)) {
+            if (guess === randomNumber) {
+                alert("Congratulations! You guessed the correct number. You are a winner!");
+                return;
+            } else {
+                attempts--;
+                if (attempts > 0) {
+                    alert(`Incorrect guess. You have ${attempts} attempts left.`);
+                }
+            }
+        } else {
+            alert("Invalid input. Please enter a valid number.");
+        }
+    }
+
+    alert(`Sorry, you've used all your attempts. The correct number was ${randomNumber}. You failed.`);
+}
+
+playGame();
+
+  </script>
+</body>
+</html>
